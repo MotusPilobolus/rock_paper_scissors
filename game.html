@@ -1,8 +1,18 @@
 <html>
-<style></style>
+<link rel="stylesheet" href="/style.css">
 <main>
     <body>
-
+<div class="container container-column">
+    <h1>RPS</h1>
+    <h2>Play now:</h2>
+    <div class="container">
+<button data-key="rock" class="button">Rock</button>
+<button data-key="paper" class="button">Paper</button>
+<button data-key="scissors" class="button">Scissors</button> </div>
+<h2>Result:</h2>
+<div class="result"> </div>
+<!-- <button class="button">Play Again!</button> -->
+</div>
     </body>
 </main>
 <script>
@@ -33,10 +43,9 @@ function playerPlay() {
     return playerChoice;
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound() {
     computerSelection = computerPlay();
-    playerSelection = playerPlay();
-    computerSelection.toLowerCase
+    computerSelection.toLowerCase;
     let playerDraw = "It's a draw!";
     let playerWin = "You win! " + playerSelection + " beats " + computerSelection + "!";
     let playerLose = "You lose! " + computerSelection + " beats " + playerSelection + "!";
@@ -70,18 +79,25 @@ function playRound(playerSelection, computerSelection) {
         console.log(gameEndPhrase, "Computer: " + computerScore, "Human: " + playerScore);
 }
 
-function game() {
-    playRound(playerSelection, computerSelection); 
-    playRound(playerSelection, computerSelection);  
-    playRound(playerSelection, computerSelection);  
-    playRound(playerSelection, computerSelection);  
-    playRound(playerSelection, computerSelection);  
-return 'Game over.';
+//function game() {
+//    playRound(playerSelection, computerSelection); 
+//    playRound(playerSelection, computerSelection);  
+//    playRound(playerSelection, computerSelection);  
+//    playRound(playerSelection, computerSelection);  
+//    playRound(playerSelection, computerSelection);  
+//return 'Game over.';
+//}
+const buttons = document.querySelectorAll('.button');
+function buttonPlay(e) {
+    playerSelection = e.target.dataset.key;
+    playRound();
 }
 
+buttons.forEach(button => button.addEventListener('click', buttonPlay));
 
 //runable code
-console.log(game())
+//console.log(game())
+
 
 </script>
 </html>

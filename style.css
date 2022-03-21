@@ -1,0 +1,30 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: antiquewhite;
+    margin: 2px;
+}
+.container {
+    display:flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.container-column {
+    flex-direction: column;
+}
+.button {
+    border: 1px solid #d3d3;
+    border-radius: 15px;
+    padding: 10px 20px;
+}
+.button:hover {
+    background-color: #d3d3;
+    transition: 0.5s ease;
+    border: 1px solid black;
+}
+.result {
+    background-color: #fff;
+    border: 1px solid black;
+    min-width: 10vw;
+    min-height: 5vh;
+}
