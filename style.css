@@ -25,6 +25,7 @@
 .result {
     background-color: #fff;
     border: 1px solid black;
-    min-width: 10vw;
+    min-width: 15vw;
     min-height: 5vh;
+    padding: 10px;
 }

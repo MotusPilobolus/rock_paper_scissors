@@ -10,7 +10,7 @@
 <button data-key="paper" class="button">Paper</button>
 <button data-key="scissors" class="button">Scissors</button> </div>
 <h2>Result:</h2>
-<div class="result"> </div>
+<div class="container"><p id="result-display" class="result"> </p> </div>
 <!-- <button class="button">Play Again!</button> -->
 </div>
     </body>
@@ -49,8 +49,10 @@ function playRound() {
     let playerDraw = "It's a draw!";
     let playerWin = "You win! " + playerSelection + " beats " + computerSelection + "!";
     let playerLose = "You lose! " + computerSelection + " beats " + playerSelection + "!";
+
     if (playerSelection == computerSelection) {
         gameEndPhrase = playerDraw }
+        
         else if (playerSelection == "rock") {
         if (computerSelection == "scissors") {
             gameEndPhrase = playerWin;
@@ -76,9 +78,8 @@ function playRound() {
                 computerScore += 1; }
         }
         else { gameEndPhrase = "Something's wrong here."}
-        console.log(gameEndPhrase, "Computer: " + computerScore, "Human: " + playerScore);
-}
-
+        document.getElementById('result-display').textContent=gameEndPhrase;
+    }
 //function game() {
 //    playRound(playerSelection, computerSelection); 
 //    playRound(playerSelection, computerSelection);  
