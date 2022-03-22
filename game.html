@@ -10,7 +10,7 @@
 <button data-key="paper" class="button">Paper</button>
 <button data-key="scissors" class="button">Scissors</button> </div>
 <h2>Result:</h2>
-<div class="container"><p id="result-display" class="result"> </p> </div>
+<div class="container"><p id="result-display" class="result"> Let's Play! </p> <p id="score-display" class="result">Score: <br/>Computer: 0 Player: 0</p> </div>
 <!-- <button class="button">Play Again!</button> -->
 </div>
     </body>
@@ -21,6 +21,7 @@ let computerSelection = "";
 let playerSelection = "";
 let playerScore = 0;
 let computerScore = 0;
+const buttons = document.querySelectorAll('.button');
 
 //defined functions
 
@@ -37,12 +38,6 @@ function computerPlay() {
     return computerChoice;
 }
 
-function playerPlay() {
-    playerChoice = prompt('Rock, paper or scissors?','Rock');
-    playerChoice = playerChoice.toLowerCase();
-    return playerChoice;
-}
-
 function playRound() {
     computerSelection = computerPlay();
     computerSelection.toLowerCase;
@@ -51,8 +46,7 @@ function playRound() {
     let playerLose = "You lose! " + computerSelection + " beats " + playerSelection + "!";
 
     if (playerSelection == computerSelection) {
-        gameEndPhrase = playerDraw }
-        
+        gameEndPhrase = playerDraw }       
         else if (playerSelection == "rock") {
         if (computerSelection == "scissors") {
             gameEndPhrase = playerWin;
@@ -79,19 +73,17 @@ function playRound() {
         }
         else { gameEndPhrase = "Something's wrong here."}
         document.getElementById('result-display').textContent=gameEndPhrase;
+        document.getElementById('score-display').textContent=`Score: Computer: ${computerScore} Player: ${playerScore}`
     }
-//function game() {
-//    playRound(playerSelection, computerSelection); 
-//    playRound(playerSelection, computerSelection);  
-//    playRound(playerSelection, computerSelection);  
-//    playRound(playerSelection, computerSelection);  
-//    playRound(playerSelection, computerSelection);  
-//return 'Game over.';
-//}
-const buttons = document.querySelectorAll('.button');
+
+
 function buttonPlay(e) {
     playerSelection = e.target.dataset.key;
     playRound();
+    if (computerScore > 4 || playerScore > 4) {
+         if (computerScore > 4) {document.getElementById('score-display').textContent="You lose! Try again next time!";playerScore = 0;computerScore = 0;}
+         else if (playerScore > 4) {document.getElementById('score-display').textContent="You win! Want to play again?";playerScore = 0;computerScore = 0;}
+    }
 }
 
 buttons.forEach(button => button.addEventListener('click', buttonPlay));
